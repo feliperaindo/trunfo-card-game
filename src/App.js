@@ -7,12 +7,13 @@ class App extends React.Component {
     super();
     this.onInputChange = this.onInputChange.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
-    this.validatePoints = this.validatePoints.bind(this);
+
     this.numbersInputsValidation = this.numbersInputsValidation.bind(this);
-    this.stringInputsValidation = this.stringInputsValidation.bind(this);
-    this.validateValue = this.validateValue.bind(this);
     this.validatePoints = this.validatePoints.bind(this);
     this.sumPoints = this.sumPoints.bind(this);
+
+    this.stringInputsValidation = this.stringInputsValidation.bind(this);
+    this.validateValue = this.validateValue.bind(this);
 
     this.state = {
       cardName: '',
@@ -31,7 +32,7 @@ class App extends React.Component {
   onInputChange({ target }) {
     const { name, value, type } = target;
     const checkInput = (type === 'checkbox') ? target.checked : value;
-    this.setState({ [name]: checkInput });
+    this.setState({ [name]: checkInput }, this.onSaveButtonClick);
   }
 
   onSaveButtonClick() {
@@ -48,10 +49,11 @@ class App extends React.Component {
   numbersInputsValidation() {
     const { cardAttr1, cardAttr2, cardAttr3 } = this.state;
     const allCardPoints = [
-      this.ValidatePoints(cardAttr1),
-      this.ValidatePoints(cardAttr2),
+      this.validatePoints(cardAttr1),
+      this.validatePoints(cardAttr2),
       this.validatePoints(cardAttr3),
     ];
+
     if (allCardPoints.includes(false)) {
       return 'Invalid number! Power can`t be higher than 90 and lower than 0';
     }
@@ -61,6 +63,17 @@ class App extends React.Component {
       return 'Cart can not have a sum of all attributes high than 210 points';
     }
     return true;
+  }
+
+  validatePoints(num) {
+    const toNumber = Number(num);
+    const maxAllowed = 90;
+    const minAllowed = 0;
+    return (toNumber <= maxAllowed && toNumber >= minAllowed) ? toNumber : false;
+  }
+
+  sumPoints(numbers) {
+    return numbers.reduce((total, eachNumber) => total + eachNumber, 0);
   }
 
   stringInputsValidation() {
@@ -80,17 +93,6 @@ class App extends React.Component {
   validateValue(string) {
     const minAllowed = 0;
     return (string.length > minAllowed) ? string : false;
-  }
-
-  validatePoints(num) {
-    const toNumber = Number(num);
-    const maxAllowed = 90;
-    const minAllowed = 0;
-    return (toNumber <= maxAllowed && toNumber > minAllowed) ? toNumber : false;
-  }
-
-  sumPoints(...numbers) {
-    return numbers.reduce((total, eachNumber) => total + eachNumber, 0);
   }
 
   render() {
