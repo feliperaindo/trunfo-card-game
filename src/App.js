@@ -41,7 +41,7 @@ class App extends React.Component {
   }
 
   onSaveButtonClick() {
-    this.setState(({
+    const {
       cardName,
       cardDescription,
       cardAttr1,
@@ -50,29 +50,37 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
-    }) => {
-      const cardToSave = {
-        cardName,
-        cardDescription,
-        cardAttr1,
-        cardAttr2,
-        cardAttr3,
-        cardImage,
-        cardRare,
-        cardTrunfo,
-      };
+      savedCards,
+    } = this.state;
 
-      const { savedCards } = this.state;
-      savedCards.push(cardToSave);
+    const cardToSave = {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+    };
 
-      if (cardTrunfo) {
-        this.setState({ hasTrunfo: cardTrunfo });
-      }
-    }, this.cleanForm);
+    const newSavedCards = [...savedCards, cardToSave];
+
+    this.setState({ savedCards: newSavedCards, hasTrunfo: cardTrunfo }, this.cleanForm);
   }
 
-  deleteCardSelected(event) {
-    console.log(event.target.key);
+  deleteCardSelected({ target }) {
+    const { savedCards } = this.state;
+    const { id } = target;
+    const getCardName = id.replace('-button', '');
+
+    const { cardTrunfo } = savedCards.find(({ cardName }) => cardName === getCardName);
+    const newArrayRemovedItem = savedCards
+      .filter(({ cardName }) => cardName !== getCardName);
+
+    if (cardTrunfo) {
+      this.setState({ savedCards: newArrayRemovedItem, hasTrunfo: false });
+    } else { this.setState({ savedCards: newArrayRemovedItem }); }
   }
 
   cleanForm() {
@@ -179,6 +187,8 @@ class App extends React.Component {
           onClick={ this.deleteCardSelected }
           type="button"
           key={ `${eachCardSaved.cardName}-button` }
+          id={ `${eachCardSaved.cardName}-button` }
+          data-testid="delete-button"
         >
           Excluir
         </button>
@@ -186,33 +196,38 @@ class App extends React.Component {
     ));
 
     return (
-      <div>
-        <Form
-          cardName={ cardName }
-          cardDescription={ cardDescription }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
-          cardImage={ cardImage }
-          cardRare={ cardRare }
-          cardTrunfo={ cardTrunfo }
-          hasTrunfo={ hasTrunfo }
-          isSaveButtonDisabled={ isSaveButtonDisabled }
-          onInputChange={ this.onInputChange }
-          onSaveButtonClick={ this.onSaveButtonClick }
-        />
-        <Card
-          cardName={ cardName }
-          cardDescription={ cardDescription }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
-          cardImage={ cardImage }
-          cardRare={ cardRare }
-          cardTrunfo={ cardTrunfo }
-        />
-        {allCardsSaved}
-      </div>
+      <>
+        <div>
+          <Form
+            cardName={ cardName }
+            cardDescription={ cardDescription }
+            cardAttr1={ cardAttr1 }
+            cardAttr2={ cardAttr2 }
+            cardAttr3={ cardAttr3 }
+            cardImage={ cardImage }
+            cardRare={ cardRare }
+            cardTrunfo={ cardTrunfo }
+            hasTrunfo={ hasTrunfo }
+            isSaveButtonDisabled={ isSaveButtonDisabled }
+            onInputChange={ this.onInputChange }
+            onSaveButtonClick={ this.onSaveButtonClick }
+          />
+          <Card
+            cardName={ cardName }
+            cardDescription={ cardDescription }
+            cardAttr1={ cardAttr1 }
+            cardAttr2={ cardAttr2 }
+            cardAttr3={ cardAttr3 }
+            cardImage={ cardImage }
+            cardRare={ cardRare }
+            cardTrunfo={ cardTrunfo }
+          />
+        </div>
+        <section>
+          {allCardsSaved}
+        </section>
+
+      </>
     );
   }
 }
