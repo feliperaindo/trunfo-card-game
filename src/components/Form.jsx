@@ -21,6 +21,7 @@ class Form extends Component {
     return (
       <form action="">
         <label htmlFor="name-input">
+          Nome da carta
           <input
             type="text"
             name="cardName"
@@ -31,6 +32,7 @@ class Form extends Component {
           />
         </label>
         <label htmlFor="text-area-input">
+          Descrição da carta
           <input
             type="textarea"
             name="cardDescription"
@@ -41,36 +43,46 @@ class Form extends Component {
           />
         </label>
         <label htmlFor="first-atribute-input">
+          Primeiro atributo
           <input
             type="number"
             name="cardAttr1"
             id="first-atribute-input"
             data-testid="attr1-input"
+            min="0"
+            max="90"
             value={ cardAttr1 }
             onChange={ onInputChange }
           />
         </label>
         <label htmlFor="second-atribute-input">
+          Segundo atributo
           <input
             type="number"
             name="cardAttr2"
             id="second-atribute-input"
             data-testid="attr2-input"
+            min="0"
+            max="90"
             value={ cardAttr2 }
             onChange={ onInputChange }
           />
         </label>
         <label htmlFor="third-atribute-input">
+          Terceiro atributo
           <input
             type="number"
             name="cardAttr3"
             id="third-atribute-input"
             data-testid="attr3-input"
+            min="0"
+            max="90"
             value={ cardAttr3 }
             onChange={ onInputChange }
           />
         </label>
         <label htmlFor="img-input">
+          URL para a imagem da carta
           <input
             type="text"
             name="cardImage"
@@ -81,6 +93,7 @@ class Form extends Component {
           />
         </label>
         <label htmlFor="rare-input">
+          Raridade da carta
           <select
             name="cardRare"
             id="rare-input"
@@ -88,12 +101,15 @@ class Form extends Component {
             value={ cardRare }
             onChange={ onInputChange }
           >
+            {/* <option value="" disabled selected>Selecione uma categoria</option> */}
             <option value="normal">Normal</option>
             <option value="raro">Raro</option>
             <option value="muito raro">Muito raro</option>
           </select>
         </label>
         <label htmlFor="trunfo-input">
+          Defina se sua carta será um carta super trunfo ou não
+          (indicamos que exista apenas uma carta super trunfo no baralho).
           <input
             type="checkbox"
             name="cardTrunfo"

@@ -21,14 +21,21 @@ class Card extends Component {
     return (
       <section data-testid="name-card">
         <span>{cardName}</span>
+        <br />
         <span data-testid="rare-card">{cardRare}</span>
+        <br />
         <img src={ cardImage } alt={ cardName } data-testid="image-card" />
+        <br />
         <div>
           <span data-testid="description-card">{cardDescription}</span>
+          <br />
           <p data-testid="attr1-card">{cardAttr1}</p>
+          <br />
           <p data-testid="attr2-card">{cardAttr2}</p>
+          <br />
           <p data-testid="attr3-card">{cardAttr3}</p>
         </div>
+        <br />
         {validateTrunfo}
       </section>
     );
