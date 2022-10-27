@@ -8,6 +8,9 @@ class App extends React.Component {
     this.onInputChange = this.onInputChange.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
 
+    this.saveButtonValidation = this.saveButtonValidation.bind(this);
+    this.cleanForm = this.cleanForm.bind(this);
+
     this.numbersInputsValidation = this.numbersInputsValidation.bind(this);
     this.validatePoints = this.validatePoints.bind(this);
     this.sumPoints = this.sumPoints.bind(this);
@@ -26,16 +29,54 @@ class App extends React.Component {
       cardTrunfo: false,
       hasTrunfo: false,
       isSaveButtonDisabled: true,
+      savedCards: [],
     };
   }
 
   onInputChange({ target }) {
     const { name, value, type } = target;
     const checkInput = (type === 'checkbox') ? target.checked : value;
-    this.setState({ [name]: checkInput }, this.onSaveButtonClick);
+    this.setState({ [name]: checkInput }, this.saveButtonValidation);
   }
 
   onSaveButtonClick() {
+    this.setState(({
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+    }) => {
+      const cardToSave = {
+        cardName,
+        cardDescription,
+        cardAttr1,
+        cardAttr2,
+        cardAttr3,
+        cardImage,
+        cardRare,
+        cardTrunfo,
+      };
+      const { savedCards } = this.state;
+      savedCards.push(cardToSave);
+    }, this.cleanForm);
+  }
+
+  cleanForm() {
+    this.setState({ cardName: '',
+      cardDescription: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
+      cardImage: '',
+      cardRare: '',
+      cardTrunfo: false });
+  }
+
+  saveButtonValidation() {
     const checkStringInputs = this.stringInputsValidation();
     const checkNumbersInputs = this.numbersInputsValidation();
     if (typeof checkStringInputs === 'boolean'
@@ -57,6 +98,7 @@ class App extends React.Component {
     if (allCardPoints.includes(false)) {
       return 'Invalid number! Power can`t be higher than 90 and lower than 0';
     }
+
     const sum = this.sumPoints(allCardPoints);
     const maxAllowed = 210;
     if (sum > maxAllowed) {
