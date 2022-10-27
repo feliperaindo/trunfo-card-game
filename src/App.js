@@ -60,8 +60,14 @@ class App extends React.Component {
         cardRare,
         cardTrunfo,
       };
+
       const { savedCards } = this.state;
       savedCards.push(cardToSave);
+
+      if (cardTrunfo) {
+        const setTrunfo = { target: { name: 'hasTrunfo', value: cardTrunfo } };
+        this.onInputChange(setTrunfo);
+      }
     }, this.cleanForm);
   }
 

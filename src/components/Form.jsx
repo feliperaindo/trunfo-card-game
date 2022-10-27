@@ -18,6 +18,23 @@ class Form extends Component {
       onSaveButtonClick,
     } = this.props;
 
+    const elementNoTrunfoCard = (
+      <label htmlFor="trunfo-input">
+        Defina se sua carta será um carta super trunfo ou não
+        (deve existir apenas uma carta super trunfo no baralho).
+        <input
+          type="checkbox"
+          name="cardTrunfo"
+          id="trunfo-input"
+          data-testid="trunfo-input"
+          checked={ cardTrunfo }
+          onChange={ onInputChange }
+        />
+      </label>);
+    const checkTrunfo = hasTrunfo
+      ? <span>Você já tem um Super Trunfo em seu baralho</span>
+      : elementNoTrunfoCard;
+
     return (
       <form action="">
         <label htmlFor="name-input">
@@ -107,18 +124,7 @@ class Form extends Component {
             <option value="muito raro">Muito raro</option>
           </select>
         </label>
-        <label htmlFor="trunfo-input">
-          Defina se sua carta será um carta super trunfo ou não
-          (indicamos que exista apenas uma carta super trunfo no baralho).
-          <input
-            type="checkbox"
-            name="cardTrunfo"
-            id="trunfo-input"
-            data-testid="trunfo-input"
-            checked={ cardTrunfo }
-            onChange={ onInputChange }
-          />
-        </label>
+        {checkTrunfo}
         <button
           type="button"
           data-testid="save-button"
