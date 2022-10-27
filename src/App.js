@@ -10,6 +10,7 @@ class App extends React.Component {
 
     this.saveButtonValidation = this.saveButtonValidation.bind(this);
     this.cleanForm = this.cleanForm.bind(this);
+    this.deleteCardSelected = this.deleteCardSelected.bind(this);
 
     this.numbersInputsValidation = this.numbersInputsValidation.bind(this);
     this.validatePoints = this.validatePoints.bind(this);
@@ -68,6 +69,10 @@ class App extends React.Component {
         this.setState({ hasTrunfo: cardTrunfo });
       }
     }, this.cleanForm);
+  }
+
+  deleteCardSelected(event) {
+    console.log(event.target.key);
   }
 
   cleanForm() {
@@ -154,7 +159,31 @@ class App extends React.Component {
       cardTrunfo,
       hasTrunfo,
       isSaveButtonDisabled,
+      savedCards,
     } = this.state;
+
+    const allCardsSaved = savedCards.map((eachCardSaved) => (
+      <>
+        <Card
+          key={ eachCardSaved.cardName }
+          cardName={ eachCardSaved.cardName }
+          cardDescription={ eachCardSaved.cardDescription }
+          cardAttr1={ eachCardSaved.cardAttr1 }
+          cardAttr2={ eachCardSaved.cardAttr2 }
+          cardAttr3={ eachCardSaved.cardAttr3 }
+          cardImage={ eachCardSaved.cardImage }
+          cardRare={ eachCardSaved.cardRare }
+          cardTrunfo={ eachCardSaved.cardTrunfo }
+        />
+        <button
+          onClick={ this.deleteCardSelected }
+          type="button"
+          key={ `${eachCardSaved.cardName}-button` }
+        >
+          Excluir
+        </button>
+      </>
+    ));
 
     return (
       <div>
@@ -182,6 +211,7 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
+        {allCardsSaved}
       </div>
     );
   }
