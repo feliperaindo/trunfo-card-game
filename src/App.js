@@ -2,6 +2,7 @@ import React from 'react';
 import Card from './components/Card';
 import Form from './components/Form';
 import Header from './components/Header';
+import './style.css';
 
 class App extends React.Component {
   constructor() {
