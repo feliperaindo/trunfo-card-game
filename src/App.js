@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from './components/Card';
 import Form from './components/Form';
+import Header from './components/Header';
 
 class App extends React.Component {
   constructor() {
@@ -197,6 +198,7 @@ class App extends React.Component {
 
     return (
       <>
+        <Header />
         <div>
           <Form
             cardName={ cardName }

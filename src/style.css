@@ -1,0 +1,36 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: cyan;
+  display: flex;
+  height: 150px;
+  justify-content: space-evenly;
+}
+
+.img-container {
+  height: 160px;
+  width: 140px;
+}
+
+.name-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.img-container img {
+  height: auto;
+  width: 100%;
+}
+
+.title-header {
+  color: black;
+  font-family: Shojumaru , cursive;
+  text-shadow: 2px 2px 5px red;
+  width: 100%;
+}
