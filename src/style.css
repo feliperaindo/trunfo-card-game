@@ -1,19 +1,11 @@
-/* stylelint-disable-next-line selector-descendant-combinator-no-non-space */
-
-/* stylelint-disable-next-line selector-list-comma-space-after */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-
-  /* stylelint-disable-next-line property-no-vendor-prefix */
-  -webkit-appearance: none;
+input::-webkit-outer-spin-button {
+  appearance: none;
   margin: 0;
 }
 
-/* stylelint-disable-next-line selector-no-qualifying-type */
-input[ type = 'number' ] {
-
-  /* stylelint-disable-next-line property-no-vendor-prefix */
-  -moz-appearance: textfield;
+input::-webkit-inner-spin-button {
+  appearance: none;
+  margin: 0;
 }
 
 * {
