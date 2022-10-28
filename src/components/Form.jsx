@@ -4,6 +4,7 @@ import '../style.css';
 import Input from './Input';
 import Label from './Label';
 import Select from './Select';
+import ButtonSave from './ButtonSave';
 
 class Form extends Component {
   render() {
@@ -154,15 +155,12 @@ class Form extends Component {
             onInputChange={ onInputChange }
           />
           {checkTrunfo}
-          <button
+          <ButtonSave
             className="button-save-card"
-            type="button"
-            data-testid="save-button"
-            disabled={ isSaveButtonDisabled }
-            onClick={ onSaveButtonClick }
-          >
-            Salvar
-          </button>
+            dataTestId="save-button"
+            isSaveButtonDisabled={ isSaveButtonDisabled }
+            onSaveButtonClick={ onSaveButtonClick }
+          />
         </div>
       </form>
     );

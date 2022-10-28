@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from './components/Button';
+import Button from './components/ButtonDelete';
 import Card from './components/Card';
 import Form from './components/Form';
 import Header from './components/Header';
