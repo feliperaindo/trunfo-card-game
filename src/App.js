@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from './components/ButtonDelete';
+import ButtonDelete from './components/ButtonDelete';
 import Card from './components/Card';
 import Form from './components/Form';
 import Header from './components/Header';
@@ -186,7 +186,7 @@ class App extends React.Component {
           cardRare={ eachCardSaved.cardRare }
           cardTrunfo={ eachCardSaved.cardTrunfo }
         />
-        <Button
+        <ButtonDelete
           cardName={ eachCardSaved.cardName }
           deleteCardSelected={ this.deleteCardSelected }
         />

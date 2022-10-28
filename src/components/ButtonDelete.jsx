@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 
-class Button extends Component {
+class ButtonDelete extends Component {
   render() {
     const { cardName, deleteCardSelected } = this.props;
     return (
@@ -18,14 +18,14 @@ class Button extends Component {
   }
 }
 
-Button.defaultProps = {
+ButtonDelete.defaultProps = {
   cardName: 'informe a cardName',
   deleteCardSelected: 'informe a deleteCardSelected',
 };
 
-Button.propTypes = {
+ButtonDelete.propTypes = {
   cardName: PropTypes.string,
   deleteCardSelected: PropTypes.func,
 };
 
-export default Button;
+export default ButtonDelete;
