@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
+import '../style.css';
 
 class Card extends Component {
   render() {
@@ -19,23 +20,24 @@ class Card extends Component {
       : null;
 
     return (
-      <section data-testid="name-card">
-        <span>{cardName}</span>
-        <br />
-        <span data-testid="rare-card">{cardRare}</span>
-        <br />
+      <section data-testid="name-card" className="card-section">
+        <span className="title-card">{cardName}</span>
         <img src={ cardImage } alt={ cardName } data-testid="image-card" />
-        <br />
+        <span data-testid="rare-card" className="rare-card very-rare">{cardRare}</span>
         <div>
-          <span data-testid="description-card">{cardDescription}</span>
-          <br />
-          <p data-testid="attr1-card">{cardAttr1}</p>
-          <br />
-          <p data-testid="attr2-card">{cardAttr2}</p>
-          <br />
-          <p data-testid="attr3-card">{cardAttr3}</p>
+          <p data-testid="description-card">{cardDescription}</p>
         </div>
-        <br />
+        <fieldset>
+          <div>
+            <p data-testid="attr1-card">{cardAttr1}</p>
+          </div>
+          <div>
+            <p data-testid="attr2-card">{cardAttr2}</p>
+          </div>
+          <div>
+            <p data-testid="attr3-card">{cardAttr3}</p>
+          </div>
+        </fieldset>
         {validateTrunfo}
       </section>
     );

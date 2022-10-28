@@ -100,3 +100,64 @@ fieldset {
   top: 754px;
   width: 275px;
 }
+
+.card-section {
+  align-items: center;
+  background-color: darkslateblue;
+  border: 5px solid red;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  font-family: Epilogue , sans-serif;
+  height: 530px;
+  justify-content: start;
+  width: 400px;
+}
+
+.title-card {
+  background-color: black;
+  border-radius: 10px 10px 0% 0%;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  font-size: 30px;
+  font-weight: 700;
+  height: 50px;
+  justify-content: end;
+  margin-top: 0.5rem;
+  padding: 2px;
+  text-align: end;
+  width: 95%;
+}
+
+.card-section img {
+  height: 250px;
+  width: 95%;
+}
+
+.rare-card {
+  display: inline-block;
+  font-size: 25px;
+  font-weight: 700;
+  height: 35px;
+  line-height: 40px;
+  text-align: center;
+  text-transform: uppercase;
+  width: 95%;
+}
+
+.normal {
+  background-color: brown;
+  color: white;
+}
+
+.rare {
+  background-color: silver;
+  color: purple;
+}
+
+.very-rare {
+  background-color: darkgoldenrod;
+  color: silver;
+}
+
