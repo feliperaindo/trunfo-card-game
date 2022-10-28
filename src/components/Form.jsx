@@ -131,7 +131,7 @@ class Form extends Component {
               <option value="normal">Normal</option>
               <option value="raro">Raro</option>
               <option value="muito raro">Muito raro</option>
-              <option value="" disabled hidden>Selecione uma opção</option>
+              {/* <option value="" disabled hidden>Selecione uma opção</option> */}
             </select>
           </label>
           {checkTrunfo}
@@ -151,7 +151,7 @@ class Form extends Component {
 }
 
 Form.defaultProps = {
-  cardName: 'inform a cartName',
+  cardName: 'inform a cardName',
   cardDescription: 'inform a cardDescription',
   cardAttr1: 'inform a cardAttr1',
   cardAttr2: 'inform a cardAttr2',

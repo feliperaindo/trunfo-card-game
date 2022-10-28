@@ -43,7 +43,7 @@ class Card extends Component {
 }
 
 Card.defaultProps = {
-  cardName: 'inform a cartName',
+  cardName: 'inform a cardName',
   cardDescription: 'inform a cardDescription',
   cardAttr1: 'inform a cardAttr1',
   cardAttr2: 'inform a cardAttr2',

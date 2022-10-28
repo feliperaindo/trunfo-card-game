@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from './components/Button';
 import Card from './components/Card';
 import Form from './components/Form';
 import Header from './components/Header';
@@ -185,15 +186,10 @@ class App extends React.Component {
           cardRare={ eachCardSaved.cardRare }
           cardTrunfo={ eachCardSaved.cardTrunfo }
         />
-        <button
-          onClick={ this.deleteCardSelected }
-          type="button"
-          key={ `${eachCardSaved.cardName}-button` }
-          id={ `${eachCardSaved.cardName}-button` }
-          data-testid="delete-button"
-        >
-          Excluir
-        </button>
+        <Button
+          cardName={ eachCardSaved.cardName }
+          deleteCardSelected={ this.deleteCardSelected }
+        />
       </>
     ));
 
