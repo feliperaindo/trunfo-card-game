@@ -1,3 +1,21 @@
+/* stylelint-disable-next-line selector-descendant-combinator-no-non-space */
+
+/* stylelint-disable-next-line selector-list-comma-space-after */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+
+  /* stylelint-disable-next-line property-no-vendor-prefix */
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* stylelint-disable-next-line selector-no-qualifying-type */
+input[ type = 'number' ] {
+
+  /* stylelint-disable-next-line property-no-vendor-prefix */
+  -moz-appearance: textfield;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -79,4 +97,14 @@ form {
 
 fieldset {
   margin: 5px;
+}
+
+.form-atributes {
+  background: white;
+  border: 1px solid #29313d;
+  border-radius: 2px;
+  height: 37px;
+  left: 270px;
+  top: 754px;
+  width: 275px;
 }

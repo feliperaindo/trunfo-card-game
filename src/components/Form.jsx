@@ -78,6 +78,7 @@ class Form extends Component {
           <label htmlFor="first-atribute-input" className="form-text-relate">
             Primeiro atributo
             <input
+              className="form-atributes"
               type="number"
               name="cardAttr1"
               id="first-atribute-input"
@@ -91,6 +92,7 @@ class Form extends Component {
           <label htmlFor="second-atribute-input" className="form-text-relate">
             Segundo atributo
             <input
+              className="form-atributes"
               type="number"
               name="cardAttr2"
               id="second-atribute-input"
@@ -104,6 +106,7 @@ class Form extends Component {
           <label htmlFor="third-atribute-input" className="form-text-relate">
             Terceiro atributo
             <input
+              className="form-atributes"
               type="number"
               name="cardAttr3"
               id="third-atribute-input"
@@ -129,6 +132,7 @@ class Form extends Component {
               <option value="normal">Normal</option>
               <option value="raro">Raro</option>
               <option value="muito raro">Muito raro</option>
+              <option value="" disabled selected hidden>Selecione uma opção</option>
             </select>
           </label>
           {checkTrunfo}
