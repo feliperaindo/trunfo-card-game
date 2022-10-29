@@ -10,7 +10,7 @@ class Section extends Component {
 
   onInputChange = ({ target }) => {
     const { name, value } = target;
-    this.setState({ [name]: value }, this.filterCards);
+    this.setState({ [name]: value }, this.filteredCards);
   };
 
   filterCards = () => {
