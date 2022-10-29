@@ -73,7 +73,8 @@ class App extends Component {
       cardAttr3: '0',
       cardImage: '',
       cardRare: '',
-      cardTrunfo: false });
+      cardTrunfo: false,
+      isSaveButtonDisabled: true });
   };
 
   saveButtonValidation = () => {
@@ -171,7 +172,6 @@ class App extends Component {
         <Section
           savedCards={ savedCards }
           deleteCardSelected={ this.deleteCardSelected }
-          onInputChange={ this.onInputChange }
         />
         <Footer />
       </>
