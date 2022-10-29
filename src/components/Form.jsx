@@ -1,6 +1,5 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
-import '../style.css';
 import Input from './Input';
 import Label from './Label';
 import Select from './Select';

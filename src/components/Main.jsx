@@ -2,7 +2,6 @@ import { Component } from 'react';
 import PropTypes from 'prop-types';
 import Form from './Form';
 import Card from './Card';
-import '../style.css';
 
 class Main extends Component {
   render() {

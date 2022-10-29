@@ -24,14 +24,12 @@ Label.defaultProps = {
   className: 'Provide a string as a className',
   id: 'Provide a string as a id',
   contentText: 'Provide a string as a contentText',
-
 };
 
 Label.propTypes = {
   className: PropTypes.string,
   id: PropTypes.string,
   contentText: PropTypes.string,
-
 };
 
 export default Label;
