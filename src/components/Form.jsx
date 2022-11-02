@@ -52,7 +52,7 @@ class Form extends Component {
     return (
       <form action="">
         <h2 className="title-form">Crie uma nova carta</h2>
-        <fieldset>
+        <fieldset className="fieldset-info-form">
           <Label
             id="name-input"
             className="form-text-relate"
@@ -93,7 +93,7 @@ class Form extends Component {
             onInputChange={ onInputChange }
           />
         </fieldset>
-        <fieldset>
+        <fieldset className="fieldset-atributes-form">
           <Label
             id="first-atribute-input"
             className="form-text-relate"

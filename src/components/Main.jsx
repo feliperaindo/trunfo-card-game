@@ -21,7 +21,7 @@ class Main extends Component {
     } = this.props;
 
     return (
-      <>
+      <main>
         <Form
           cardName={ cardName }
           cardDescription={ cardDescription }
@@ -47,7 +47,7 @@ class Main extends Component {
           cardTrunfo={ cardTrunfo }
         />
 
-      </>
+      </main>
     );
   }
 }

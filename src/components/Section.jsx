@@ -4,33 +4,57 @@ import Label from './Label';
 import Input from './Input';
 import Card from './Card';
 import ButtonDelete from './ButtonDelete';
+import SelectFilter from './SelectFilter';
 
 class Section extends Component {
-  state = { filterInput: '' };
+  state = { filterInput: '', rareFilter: 'all', cardsToShow: [] };
+
+  componentDidMount() {
+    const { savedCards } = this.props;
+    this.setState({ cardsToShow: savedCards });
+  }
+
+  // componentDidUpdate() {
+  //   const { savedCards } = this.props;
+  //   this.setState({ cardsToShow: savedCards });
+  // }
 
   onInputChange = ({ target }) => {
-    const { name, value } = target;
-    this.setState({ [name]: value }, this.filteredCards);
+    const { name, value, type } = target;
+    this.setState({ [name]: value }, () => { this.filterType(type); });
   };
 
-  filterCards = () => {
-    const { filterInput } = this.state;
-    const { savedCards } = this.props;
+  // filterType = (type) => {
+  //   if (type === 'select') {
+  //     this.filterCardsByRare();
+  //   } else {
+  //     this.filterCardsByName();
+  //   }
+  // };
 
-    if (filterInput.length === 0) {
-      return savedCards;
-    }
-    return savedCards.filter(({ cardName }) => cardName.toLowerCase()
-      .includes(filterInput.toLowerCase()));
-  };
+  // filterCardsByName = () => {
+  //   const { filterInput, cardsToShow } = this.state;
+  //   const updateCardsToShow = (filterInput.length === 0)
+  //     ? cardsToShow
+  //     : cardsToShow.filter(({ cardName }) => cardName.toLowerCase()
+  //       .includes(filterInput.toLowerCase()));
+  //   this.setState({ cardsToShow: updateCardsToShow });
+  // };
+
+  // filterCardsByRare = () => {
+  //   const { rareFilter, cardsToShow } = this.state;
+  //   const updateCardsToShow = (rareFilter === 'all')
+  //     ? cardsToShow
+  //     : cardsToShow.filter(({ cardRare }) => cardRare === rareFilter);
+  //   this.setState({ cardsToShow: updateCardsToShow });
+  // };
 
   render() {
     const { deleteCardSelected, savedCards } = this.props;
-    const { filterInput } = this.state;
-    const filteredCards = this.filterCards();
+    const { filterInput, rareFilter, cardsToShow } = this.state;
 
     const allCardsSaved = (savedCards.length > 0)
-      ? filteredCards.map((eachCardSaved) => (
+      ? savedCards.map((eachCardSaved) => (
         <>
           <Card
             cardName={ eachCardSaved.cardName }
@@ -64,6 +88,18 @@ class Section extends Component {
           dataTestId="name-filter"
           onInputChange={ this.onInputChange }
           value={ filterInput }
+        />
+        <Label
+          className="rare-filter"
+          id="filter-rare-input"
+          contentText="Pesquise pela raridade da carta"
+        />
+        <SelectFilter
+          name="rareFilter"
+          id="filter-rare-input"
+          dataTestId="rare-filter"
+          value={ rareFilter }
+          onInputChange={ this.onInputChange }
         />
         {allCardsSaved}
       </>

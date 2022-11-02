@@ -24,6 +24,12 @@ header {
   justify-content: space-evenly;
 }
 
+main {
+  display: flex;
+  justify-content: space-around;
+  padding: 40px;
+}
+
 .img-container {
   height: 160px;
   width: 140px;
@@ -54,8 +60,7 @@ form {
   box-shadow: 1px 4px 19px rgba(0, 0, 0, 0.8);
   display: flex;
   flex-direction: column;
-  margin: 5rem 4rem;
-  width: 60%;
+  margin: 0 1rem;
 }
 
 .title-form {
@@ -87,8 +92,9 @@ form {
   width: 300px;
 }
 
-fieldset {
+form fieldset {
   margin: 5px;
+  padding: 10px;
 }
 
 .form-atributes {
@@ -104,8 +110,8 @@ fieldset {
 .card-section {
   align-items: center;
   background-color: darkslateblue;
-  border: 5px solid red;
   border-radius: 10px;
+  box-shadow: 1px 4px 19px rgba(0, 0, 0, 0.8);
   display: flex;
   flex-direction: column;
   font-family: Epilogue , sans-serif;
@@ -161,3 +167,37 @@ fieldset {
   color: silver;
 }
 
+.fieldset-atributes {
+  border-color: black;
+  flex-wrap: wrap;
+  margin: 5px;
+  padding: 2px;
+  width: 95%;
+}
+
+.fieldset-atributes p {
+  font-size: small;
+}
+
+.div-atributes {
+  display: flex;
+  justify-content: space-between;
+  margin: 2px;
+}
+
+.super-trunfo {
+  color: white;
+  font-family: Shojumaru , cursive;
+  text-shadow: 2px 2px 5px blue;
+}
+
+.fieldset-atributes-form {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+}
+
+.fieldset-info-form {
+  display: flex;
+  flex-direction: column;
+}
