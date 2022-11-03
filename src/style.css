@@ -63,6 +63,10 @@ form {
   margin: 0 1rem;
 }
 
+form div {
+  display: flex;
+}
+
 .title-form {
   color: #2fc18c;
   font-family: Arial , Helvetica , sans-serif;
@@ -194,10 +198,23 @@ form fieldset {
 .fieldset-atributes-form {
   display: flex;
   flex-direction: column;
-  width: 40%;
+  width: 50%;
 }
 
 .fieldset-info-form {
   display: flex;
   flex-direction: column;
+}
+
+label {
+  padding-top: 16px;
+}
+
+label:first-child {
+  padding-top: 0;
+}
+
+.trunfo-input {
+  display: inline;
+  margin-top: 50px;
 }

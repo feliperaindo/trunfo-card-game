@@ -25,6 +25,7 @@ class Input extends Component {
           data-testid={ dataTestId }
           onChange={ onInputChange }
           checked={ cardTrunfo }
+          className={ aliasClassName }
         />
       );
     case 'number':
