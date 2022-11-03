@@ -87,13 +87,22 @@ form div {
 }
 
 .button-save-card {
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-  justify-content: center;
+  align-self: center;
+  border-radius: 20px;
+  box-shadow: 2px 2px 2px grey;
+  margin-top: 5px;
   padding: 8px 32px;
   width: 300px;
+}
+
+.button-save-card:hover:enabled {
+  background-color: #2fc18c;
+  transition: 0.5s;
+}
+
+.button-save-card:enabled:active {
+  background-color: darkblue;
+  transition: 0.5s;
 }
 
 form fieldset {
@@ -140,12 +149,18 @@ form fieldset {
   width: 95%;
 }
 
-.card-section img {
+.img-card {
   height: 250px;
+  visibility: hidden;
   width: 95%;
 }
 
+.img-card[ src ] {
+  visibility: visible;
+}
+
 .rare-card {
+  background-color: white;
   display: inline-block;
   font-size: 25px;
   font-weight: 700;
@@ -172,6 +187,7 @@ form fieldset {
 }
 
 .fieldset-atributes {
+  background-color: whitesmoke;
   border-color: black;
   flex-wrap: wrap;
   margin: 5px;
@@ -214,7 +230,20 @@ label:first-child {
   padding-top: 0;
 }
 
-.trunfo-input {
-  display: inline;
-  margin-top: 50px;
+.trunfo-input input {
+  margin-right: 10px;
+}
+
+.div-trunfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-top: 1rem;
+}
+
+.div-trunfo span {
+  color: gray;
+  font-size: 13px;
+  margin-top: 1rem;
+  text-align: center;
 }

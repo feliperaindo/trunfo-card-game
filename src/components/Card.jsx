@@ -21,8 +21,13 @@ class Card extends Component {
     return (
       <section data-testid="name-card" className="card-section" key={ `${cardName}-key` }>
         <span className="title-card">{cardName}</span>
-        <img src={ cardImage } alt={ cardName } data-testid="image-card" />
-        <span data-testid="rare-card" className="rare-card very-rare">{cardRare}</span>
+        <img
+          src={ cardImage }
+          alt={ cardName }
+          data-testid="image-card"
+          className="img-card"
+        />
+        <span data-testid="rare-card" className="rare-card normal">{cardRare}</span>
         <fieldset className="fieldset-atributes">
           <span>Descrição:</span>
           <p data-testid="description-card">{cardDescription}</p>

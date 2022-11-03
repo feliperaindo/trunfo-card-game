@@ -13,7 +13,7 @@ class App extends Component {
     cardAttr2: '0',
     cardAttr3: '0',
     cardImage: '',
-    cardRare: '',
+    cardRare: 'normal',
     cardTrunfo: false,
     hasTrunfo: false,
     isSaveButtonDisabled: true,
@@ -77,7 +77,29 @@ class App extends Component {
       isSaveButtonDisabled: true });
   };
 
+  changeClassRare = () => {
+    const { cardRare } = this.state;
+    const getElement = document.querySelector('.rare-card');
+    switch (cardRare) {
+    case 'normal':
+      getElement.className = 'rare-card';
+      getElement.classList.add('normal');
+      break;
+    case 'raro':
+      getElement.className = 'rare-card';
+      getElement.classList.add('rare');
+      break;
+    case 'muito raro':
+      getElement.className = 'rare-card';
+      getElement.classList.add('very-rare');
+      break;
+    default: getElement.className = 'rare-card';
+      break;
+    }
+  };
+
   saveButtonValidation = () => {
+    this.changeClassRare();
     const checkStringInputs = this.stringInputsValidation();
     const checkNumbersInputs = this.numbersInputsValidation();
     if (typeof checkStringInputs === 'boolean'

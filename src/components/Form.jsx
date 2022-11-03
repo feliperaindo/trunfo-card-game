@@ -26,13 +26,12 @@ class Form extends Component {
     (deve existir apenas uma carta super trunfo no baralho).`;
 
     const elementNoTrunfoCard = (
-      <div>
-        <label htmlFor="trunfo-input">
+      <div className="div-trunfo">
+        <label htmlFor="trunfo-input" className="trunfo-input">
           <input
             type="checkbox"
             name="cardTrunfo"
             id="trunfo-input"
-            className="trunfo-input"
             data-testid="trunfo-input"
             onChange={ onInputChange }
             checked={ cardTrunfo }
@@ -44,8 +43,10 @@ class Form extends Component {
 
     );
 
+    const noTrunfo = <span>Você já tem um Super Trunfo em seu baralho</span>;
+
     const checkTrunfo = hasTrunfo
-      ? <span>Você já tem um Super Trunfo em seu baralho</span>
+      ? <div className="div-trunfo">{noTrunfo}</div>
       : elementNoTrunfoCard;
 
     return (
