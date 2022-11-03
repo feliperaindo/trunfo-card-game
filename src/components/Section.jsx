@@ -1,19 +1,23 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 import Label from './Label';
-import Input from './Input';
+// import Input from './Input';
 import SelectFilter from './SelectFilter';
 import CardSave from './CardSave';
 import ButtonDelete from './ButtonDelete';
 
 class Section extends Component {
-  state = { filterInput: '', rareFilter: 'all', checkTrunfo: false };
+  state = { filterInput: '', rareFilter: 'todas', checkTrunfo: false };
 
   onInputChange = ({ target }) => {
     const { name, value, type } = target;
     const checkInput = (type === 'checkbox') ? target.checked : value;
     this.setState({ [name]: checkInput });
   };
+
+  // disableTrunfo = () => {
+  //   const {} = this.state;
+  // }
 
   render() {
     const { deleteCardSelected, savedCards } = this.props;
@@ -27,7 +31,7 @@ class Section extends Component {
       ? cards.filter(({ cardName }) => cardName.includes(filterInput))
       : cards);
 
-    const filterByRare = (cards) => ((rareFilter !== 'all')
+    const filterByRare = (cards) => ((rareFilter !== 'todas')
       ? cards.filter(({ cardRare }) => cardRare === rareFilter)
       : cards);
 
@@ -61,19 +65,21 @@ class Section extends Component {
 
     return (
       <section key="main-section">
-        <Label
+        <label
+          htmlFor="filter-name-input"
           className="input-filter"
-          id="filter-name-input"
-          contentText="Pesquise pelo nome da carta"
-        />
-        <Input
-          type="text"
-          name="filterInput"
-          id="filter-name-input"
-          dataTestId="name-filter"
-          onInputChange={ this.onInputChange }
-          value={ filterInput }
-        />
+        >
+          Pesquise pelo nome da carta
+          <input
+            type="text"
+            name="filterInput"
+            id="filter-name-input"
+            data-testid="name-filter"
+            onChange={ this.onInputChange }
+            value={ filterInput }
+            disabled={ checkTrunfo }
+          />
+        </label>
         <Label
           className="rare-filter"
           id="filter-rare-input"
@@ -85,16 +91,19 @@ class Section extends Component {
           dataTestId="rare-filter"
           value={ rareFilter }
           onInputChange={ this.onInputChange }
+          disabled={ checkTrunfo }
         />
-        <Input
-          className="checkbox-filter-trunfo"
-          type="checkbox"
-          name="checkTrunfo"
-          id="trunfo-filter-input"
-          dataTestId="trunfo-filter"
-          cardTrunfo={ checkTrunfo }
-          onInputChange={ this.onInputChange }
-        />
+        <label htmlFor="checkTrunfo" className="checkbox-filter-trunfo">
+          <input
+            type="checkbox"
+            name="checkTrunfo"
+            id="trunfo-filter-input"
+            data-testid="trunfo-filter"
+            onChange={ this.onInputChange }
+            checked={ checkTrunfo }
+          />
+          Filtor de carta Trunfo
+        </label>
         {renderCards}
       </section>
     );

@@ -9,6 +9,7 @@ class SelectFilter extends Component {
       dataTestId,
       value: aliasValue,
       onInputChange,
+      disabled: aliasDisabled,
     } = this.props;
 
     return (
@@ -19,8 +20,9 @@ class SelectFilter extends Component {
         value={ aliasValue }
         onChange={ onInputChange }
         key={ aliasId }
+        disabled={ aliasDisabled }
       >
-        <option value="all">Todos</option>
+        <option value="todas">Todas</option>
         <option value="normal">Normal</option>
         <option value="raro">Raro</option>
         <option value="muito raro">Muito raro</option>
@@ -35,6 +37,7 @@ SelectFilter.defaultProps = {
   dataTestId: 'Provide a string as a dataTestId',
   onInputChange: 'Provide a function as a onChange',
   value: 'Provide a string as a value',
+  disabled: 'Provide a boolean for disabled',
 };
 
 SelectFilter.propTypes = {
@@ -43,6 +46,7 @@ SelectFilter.propTypes = {
   id: PropTypes.string,
   dataTestId: PropTypes.string,
   onInputChange: PropTypes.func,
+  disabled: PropTypes.bool,
 };
 
 export default SelectFilter;
