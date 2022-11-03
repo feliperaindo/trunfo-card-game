@@ -13,6 +13,7 @@ class Label extends Component {
       <label
         htmlFor={ aliasId }
         className={ aliasClassName }
+        key={ aliasId }
       >
         {contentText}
       </label>

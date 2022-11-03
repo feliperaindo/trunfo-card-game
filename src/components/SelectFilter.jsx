@@ -18,8 +18,9 @@ class SelectFilter extends Component {
         data-testid={ dataTestId }
         value={ aliasValue }
         onChange={ onInputChange }
+        key={ aliasId }
       >
-        <option value="all">Todas</option>
+        <option value="all">Todos</option>
         <option value="normal">Normal</option>
         <option value="raro">Raro</option>
         <option value="muito raro">Muito raro</option>

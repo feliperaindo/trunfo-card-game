@@ -14,6 +14,7 @@ class App extends Component {
     cardAttr3: '0',
     cardImage: '',
     cardRare: 'normal',
+    classApply: ['rare-card'],
     cardTrunfo: false,
     hasTrunfo: false,
     isSaveButtonDisabled: true,
@@ -84,14 +85,17 @@ class App extends Component {
     case 'normal':
       getElement.className = 'rare-card';
       getElement.classList.add('normal');
+      this.setState({ classApply: ['rare-card', 'normal'] });
       break;
     case 'raro':
       getElement.className = 'rare-card';
       getElement.classList.add('rare');
+      this.setState({ classApply: ['rare-card', 'rare'] });
       break;
     case 'muito raro':
       getElement.className = 'rare-card';
       getElement.classList.add('very-rare');
+      this.setState({ classApply: ['rare-card', 'very-rare'] });
       break;
     default: getElement.className = 'rare-card';
       break;
@@ -127,6 +131,7 @@ class App extends Component {
       cardRare,
       cardTrunfo,
       savedCards,
+      classApply,
     } = this.state;
 
     const cardToSave = {
@@ -138,6 +143,7 @@ class App extends Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      classApply,
     };
 
     const newSavedCards = [...savedCards, cardToSave];

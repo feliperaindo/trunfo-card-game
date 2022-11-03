@@ -26,6 +26,7 @@ class Input extends Component {
           onChange={ onInputChange }
           checked={ cardTrunfo }
           className={ aliasClassName }
+          key={ aliasId }
         />
       );
     case 'number':
@@ -40,6 +41,7 @@ class Input extends Component {
           min={ minAndMax[0] }
           max={ minAndMax[1] }
           className={ aliasClassName }
+          key={ aliasId }
         />
       );
 
@@ -52,6 +54,7 @@ class Input extends Component {
           data-testid={ dataTestId }
           onChange={ onInputChange }
           value={ aliasValue }
+          key={ aliasId }
         />
       );
     }

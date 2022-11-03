@@ -21,7 +21,7 @@ class Main extends Component {
     } = this.props;
 
     return (
-      <main>
+      <main key="main-key">
         <Form
           cardName={ cardName }
           cardDescription={ cardDescription }
@@ -46,7 +46,6 @@ class Main extends Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
-
       </main>
     );
   }

@@ -12,6 +12,7 @@ class Card extends Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      classApply,
     } = this.props;
 
     const validateTrunfo = (cardTrunfo)
@@ -19,7 +20,7 @@ class Card extends Component {
       : null;
 
     return (
-      <section data-testid="name-card" className="card-section">
+      <section className="card-section">
         <span className="title-card">{cardName}</span>
         <img
           src={ cardImage }
@@ -27,7 +28,12 @@ class Card extends Component {
           data-testid="image-card"
           className="img-card"
         />
-        <span data-testid="rare-card" className="rare-card normal">{cardRare}</span>
+        <span
+          data-testid="rare-card"
+          className={ `${classApply[0]} ${classApply[1]}` }
+        >
+          {cardRare}
+        </span>
         <fieldset className="fieldset-atributes">
           <span>Descrição:</span>
           <p data-testid="description-card">{cardDescription}</p>
@@ -61,6 +67,7 @@ Card.defaultProps = {
   cardImage: 'inform a cartImage',
   cardRare: 'inform a cardRare',
   cardTrunfo: 'inform a cartTrunfo',
+  classApply: 'inform a classApply',
 };
 
 Card.propTypes = {
@@ -72,6 +79,7 @@ Card.propTypes = {
   cardImage: PropTypes.string,
   cardRare: PropTypes.string,
   cardTrunfo: PropTypes.bool,
+  classApply: PropTypes.arrayOf(PropTypes.string),
 };
 
 export default Card;

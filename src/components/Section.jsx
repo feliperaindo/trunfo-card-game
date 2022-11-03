@@ -2,80 +2,65 @@ import { Component } from 'react';
 import PropTypes from 'prop-types';
 import Label from './Label';
 import Input from './Input';
-import Card from './Card';
-import ButtonDelete from './ButtonDelete';
 import SelectFilter from './SelectFilter';
+import CardSave from './CardSave';
+import ButtonDelete from './ButtonDelete';
 
 class Section extends Component {
-  state = { filterInput: '', rareFilter: 'all', cardsToShow: [] };
-
-  componentDidMount() {
-    const { savedCards } = this.props;
-    this.setState({ cardsToShow: savedCards });
-  }
-
-  // componentDidUpdate() {
-  //   const { savedCards } = this.props;
-  //   this.setState({ cardsToShow: savedCards });
-  // }
+  state = { filterInput: '', rareFilter: 'all', checkTrunfo: false };
 
   onInputChange = ({ target }) => {
     const { name, value, type } = target;
-    this.setState({ [name]: value }, () => { this.filterType(type); });
+    const checkInput = (type === 'checkbox') ? target.checked : value;
+    this.setState({ [name]: checkInput });
   };
-
-  // filterType = (type) => {
-  //   if (type === 'select') {
-  //     this.filterCardsByRare();
-  //   } else {
-  //     this.filterCardsByName();
-  //   }
-  // };
-
-  // filterCardsByName = () => {
-  //   const { filterInput, cardsToShow } = this.state;
-  //   const updateCardsToShow = (filterInput.length === 0)
-  //     ? cardsToShow
-  //     : cardsToShow.filter(({ cardName }) => cardName.toLowerCase()
-  //       .includes(filterInput.toLowerCase()));
-  //   this.setState({ cardsToShow: updateCardsToShow });
-  // };
-
-  // filterCardsByRare = () => {
-  //   const { rareFilter, cardsToShow } = this.state;
-  //   const updateCardsToShow = (rareFilter === 'all')
-  //     ? cardsToShow
-  //     : cardsToShow.filter(({ cardRare }) => cardRare === rareFilter);
-  //   this.setState({ cardsToShow: updateCardsToShow });
-  // };
 
   render() {
     const { deleteCardSelected, savedCards } = this.props;
-    const { filterInput, rareFilter, cardsToShow } = this.state;
+    const { filterInput, rareFilter, checkTrunfo } = this.state;
 
-    const allCardsSaved = (savedCards.length > 0)
-      ? savedCards.map((eachCardSaved) => (
-        <>
-          <Card
-            cardName={ eachCardSaved.cardName }
-            cardDescription={ eachCardSaved.cardDescription }
-            cardAttr1={ eachCardSaved.cardAttr1 }
-            cardAttr2={ eachCardSaved.cardAttr2 }
-            cardAttr3={ eachCardSaved.cardAttr3 }
-            cardImage={ eachCardSaved.cardImage }
-            cardRare={ eachCardSaved.cardRare }
-            cardTrunfo={ eachCardSaved.cardTrunfo }
-          />
-          <ButtonDelete
-            cardName={ eachCardSaved.cardName }
-            deleteCardSelected={ deleteCardSelected }
-          />
-        </>
-      ))
-      : <span>Vocẽ ainda não tem cartas salvas</span>;
+    const checkSavedCards = () => ((savedCards === 0)
+      ? (<span>Vocẽ ainda não tem cartas salvas</span>)
+      : savedCards);
+
+    const filterByName = (cards) => ((filterInput.length > 0)
+      ? cards.filter(({ cardName }) => cardName.includes(filterInput))
+      : cards);
+
+    const filterByRare = (cards) => ((rareFilter !== 'all')
+      ? cards.filter(({ cardRare }) => cardRare === rareFilter)
+      : cards);
+
+    const filterTrunfo = (cards) => ((checkTrunfo)
+      ? cards.filter(({ cardTrunfo }) => cardTrunfo)
+      : cards);
+
+    const allCards = checkSavedCards();
+
+    const filterCards = filterTrunfo(filterByRare(filterByName(allCards)));
+
+    const renderCards = filterCards.map((eachCardSaved) => (
+      <div key={ `${eachCardSaved.cardName}-key` }>
+        <CardSave
+          cardName={ eachCardSaved.cardName }
+          cardDescription={ eachCardSaved.cardDescription }
+          cardAttr1={ eachCardSaved.cardAttr1 }
+          cardAttr2={ eachCardSaved.cardAttr2 }
+          cardAttr3={ eachCardSaved.cardAttr3 }
+          cardImage={ eachCardSaved.cardImage }
+          cardRare={ eachCardSaved.cardRare }
+          cardTrunfo={ eachCardSaved.cardTrunfo }
+          classApply={ eachCardSaved.classApply }
+        />
+        <ButtonDelete
+          cardName={ eachCardSaved.cardName }
+          deleteCardSelected={ deleteCardSelected }
+        />
+      </div>
+    ));
 
     return (
-      <>
+      <section key="main-section">
         <Label
           className="input-filter"
           id="filter-name-input"
@@ -101,8 +86,17 @@ class Section extends Component {
           value={ rareFilter }
           onInputChange={ this.onInputChange }
         />
-        {allCardsSaved}
-      </>
+        <Input
+          className="checkbox-filter-trunfo"
+          type="checkbox"
+          name="checkTrunfo"
+          id="trunfo-filter-input"
+          dataTestId="trunfo-filter"
+          cardTrunfo={ checkTrunfo }
+          onInputChange={ this.onInputChange }
+        />
+        {renderCards}
+      </section>
     );
   }
 }
