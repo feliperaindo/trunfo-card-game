@@ -1,7 +1,6 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 import Label from './Label';
-// import Input from './Input';
 import SelectFilter from './SelectFilter';
 import CardSave from './CardSave';
 import ButtonDelete from './ButtonDelete';
@@ -14,10 +13,6 @@ class Section extends Component {
     const checkInput = (type === 'checkbox') ? target.checked : value;
     this.setState({ [name]: checkInput });
   };
-
-  // disableTrunfo = () => {
-  //   const {} = this.state;
-  // }
 
   render() {
     const { deleteCardSelected, savedCards } = this.props;
